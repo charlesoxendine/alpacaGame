@@ -45,12 +45,13 @@ class GameController: NSObject, SCNSceneRendererDelegate {
     }
     
     func renderFieldSheep() {
-        for num in 1...10 {
+        for _ in 1...30 {
             let node = SCNNode(named: "Art.scnassets/llama.dae")
             let randomX:Float = Float.random(in: -1.5 ..< 1.5)
             let randomY:Float = 0
             let randomZ:Float = Float.random(in: -1 ..< 1)
             
+            node.eulerAngles = SCNVector3Make(0, Float.random(in: 1 ..< 180), 0)
             node.position = SCNVector3(x: -0.436 + randomX, y: 0.042 + randomY, z: -1.766 + randomZ)
             scene.rootNode.addChildNode(node)
         }
