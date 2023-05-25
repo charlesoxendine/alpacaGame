@@ -28,7 +28,7 @@ class GameManager {
     // Numbers that we can make quick on the fly changes to, in order to slightly change game mechanics to make
     // for a better experience for our users.
     private let alpacasPerSecond: Float = 1
-    private let moneyPerAlpacaPerSecond: Float = 0.01
+    private let moneyPerAlpacaPerSecond: Float = 0.05
     private let processerRatePerSecond: Float  = 1
     private let foodCostPerFifty: Float = 3
     
@@ -53,20 +53,17 @@ class GameManager {
             money += getMoneyRate()
         }
         
-        // If alpaca food is at 0 we will not consume food but we can also not produce anymore alpacas
-        if alpacaFood > 0 {
-            // The user has food, but not enough to feed the whole herd
-            if alpacaFood <= getAlpacaConsumtionRate() {
-                alpacaFood = 0
-            } else {
-                alpacaFood -= getAlpacaConsumtionRate()
-            }
-            
-            // Only create more if food is enough
-            if animalHusbandryManager != nil {
-                // TODO: Should be dynaminc by level
-                alpacaCount += 1
-            }
+        // The user has food, but not enough to feed the whole herd
+        if alpacaFood <= getAlpacaConsumtionRate() {
+            alpacaFood = 0
+        } else {
+            alpacaFood -= getAlpacaConsumtionRate()
+        }
+        
+        // Only create more if food is enough
+        if animalHusbandryManager != nil && residenceCount > (alpacaCount + getAlpacaSpawnRate()) {
+            // TODO: Should be dynaminc by level
+            alpacaCount += getAlpacaSpawnRate()
         }
         
         updateDelegates()
@@ -83,6 +80,7 @@ class GameManager {
     }
     
     private func getMoneyRate() -> Float {
+        let rate = moneyPerAlpacaPerSecond * alpacaFood
         return alpacaCount * moneyPerAlpacaPerSecond
     }
     
@@ -91,8 +89,8 @@ class GameManager {
     }
     
     private func getAlpacaConsumtionRate() -> Float {
-        let consumptionRate = alpacaCount * 1
-        return consumptionRate
+        let consumptionRate = alpacaCount * 0.5
+        return consumptionRate.rounded()
     }
     
     // MARK: Getters
@@ -140,9 +138,8 @@ class GameManager {
     }
     
     public func handleHusbandryTap() {
-        // Verify there is space in residences for new alpacas
-        //if residenceCount > self.alpacaCount {
+        if residenceCount > self.alpacaCount {
             alpacaCount += getAlpacaSpawnRate()
-        //}
+        }
     }
 }

@@ -62,18 +62,30 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g5W-JK-3FL">
+                                        <rect key="frame" x="644" y="0.0" width="108" height="60"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title=""/>
+                                        <connections>
+                                            <action selector="residenceTapped:" destination="BV1-FR-VrT" eventType="touchUpInside" id="lec-0r-shb"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="0.71686330782312924" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="g5W-JK-3FL" firstAttribute="top" secondItem="b5u-2s-9vm" secondAttribute="top" id="2iW-Aa-Z8b"/>
                                     <constraint firstItem="9FA-hv-YhP" firstAttribute="centerX" secondItem="b5u-2s-9vm" secondAttribute="centerX" id="CtQ-nQ-QU5"/>
                                     <constraint firstItem="1uU-jz-ERn" firstAttribute="leading" secondItem="NqY-t3-Pzh" secondAttribute="trailing" constant="15" id="Dhh-8Q-fFS"/>
                                     <constraint firstItem="pTo-Oj-tcj" firstAttribute="leading" secondItem="J8u-A1-A7D" secondAttribute="trailing" constant="15" id="LdM-Un-meU"/>
+                                    <constraint firstItem="g5W-JK-3FL" firstAttribute="leading" secondItem="J8u-A1-A7D" secondAttribute="trailing" id="OGK-HY-GXO"/>
                                     <constraint firstItem="NqY-t3-Pzh" firstAttribute="leading" secondItem="b5u-2s-9vm" secondAttribute="leading" constant="25" id="R70-B6-ZJb"/>
                                     <constraint firstItem="NqY-t3-Pzh" firstAttribute="centerY" secondItem="b5u-2s-9vm" secondAttribute="centerY" id="cUT-6g-xc9"/>
+                                    <constraint firstAttribute="trailing" secondItem="g5W-JK-3FL" secondAttribute="trailing" id="hdM-KC-7nW"/>
                                     <constraint firstAttribute="height" constant="60" id="hsw-k4-KJo"/>
                                     <constraint firstItem="9FA-hv-YhP" firstAttribute="centerY" secondItem="b5u-2s-9vm" secondAttribute="centerY" id="jqF-vG-sqC"/>
                                     <constraint firstItem="1uU-jz-ERn" firstAttribute="centerY" secondItem="b5u-2s-9vm" secondAttribute="centerY" id="l4u-mj-sYw"/>
                                     <constraint firstItem="J8u-A1-A7D" firstAttribute="centerY" secondItem="b5u-2s-9vm" secondAttribute="centerY" id="sUF-uh-hxf"/>
+                                    <constraint firstAttribute="bottom" secondItem="g5W-JK-3FL" secondAttribute="bottom" id="u1j-Kt-a91"/>
                                     <constraint firstAttribute="trailing" secondItem="pTo-Oj-tcj" secondAttribute="trailing" constant="25" id="unt-Em-Qte"/>
                                     <constraint firstItem="pTo-Oj-tcj" firstAttribute="centerY" secondItem="b5u-2s-9vm" secondAttribute="centerY" id="v0X-Ws-e38"/>
                                 </constraints>

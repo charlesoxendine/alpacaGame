@@ -85,6 +85,11 @@ class GameViewController: UIViewController {
         let myViewController = ManagerMenuViewController(nibName: "ManagerMenuViewController", bundle: nil)
         self.present(myViewController, animated: true, completion: nil)
     }
+    
+    @IBAction func residenceTapped(_ sender: Any) {
+        let myViewController = ResidencePurchaseViewController(nibName: "ResidencePurchaseViewController", bundle: nil)
+        self.present(myViewController, animated: true, completion: nil)
+    }
 }
 
 extension GameViewController: GameManagerDelegate {
