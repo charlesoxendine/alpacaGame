@@ -92,6 +92,7 @@ class GameViewController: UIViewController {
 extension GameViewController: GameManagerDelegate {
     func resetHeaderStats(moneyCount: Float, moneyValue: String, foodCount: Float, alpacaCount: Float, residenceCount: Float) {
         DispatchQueue.main.async {
+            print("VALUE: \(moneyValue)")
             self.moneyTextField.text = moneyValue
             self.foodTextField.text = "🌽: \(foodCount)"
             self.alpacaCountLabel.text = "🦙: \(alpacaCount)"

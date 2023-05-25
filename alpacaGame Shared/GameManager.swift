@@ -40,6 +40,9 @@ class GameManager {
     // MARK: Timer
     private var gameTimer: Timer?
     
+    // MARK: Bonuses
+    private var foodBonusRate: Float = 2.5
+    
     public func startTimers() {
         gameTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(runTimedCode), userInfo: nil, repeats: true)
     }
@@ -74,7 +77,12 @@ class GameManager {
     }
     
     private func getMoneyRate() -> Float {
-        let rate = moneyPerAlpacaPerSecond * (alpacaFood + 1)/alpacaCount
+        // If there is food for the herd, add bonus
+        var rate = moneyPerAlpacaPerSecond
+        if self.alpacaFood > alpacaCount {
+            rate *= foodBonusRate
+        }
+        
         return alpacaCount * rate
     }
     
@@ -130,11 +138,14 @@ class GameManager {
     }
     
     public func buyResidence(alpacaSpace: Int) {
-        guard GameManager.shared.money > (costPerResidence * Float(alpacaSpace)) else {
+        let totalCost = (costPerResidence * Float(alpacaSpace))
+        guard GameManager.shared.money > totalCost else {
             return
         }
         
+        self.money -= totalCost
         self.residenceCount += Float(alpacaSpace)
+        updateDelegates()
     }
     
     // MARK: Building Actions
@@ -155,8 +166,11 @@ class GameManager {
         if residenceCount > self.alpacaCount {
             alpacaCount += getAlpacaSpawnRate()
         }
+        
+        updateDelegates()
     }
     
+    // MARK: UTILITIES
     public static func getMoneyValue(value: Float) -> String {
         let numberFormatter = NumberFormatter()
         numberFormatter.numberStyle = .currency
