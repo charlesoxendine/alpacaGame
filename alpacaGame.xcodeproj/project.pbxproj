@@ -18,6 +18,10 @@
 		21B256422A0ED9B40061D4A0 /* FoodMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B256402A0ED9B40061D4A0 /* FoodMenuViewController.swift */; };
 		21B256432A0ED9B40061D4A0 /* FoodMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 21B256412A0ED9B40061D4A0 /* FoodMenuViewController.xib */; };
 		9F72EA712A1AF61F00BFA635 /* Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F72EA702A1AF61F00BFA635 /* Manager.swift */; };
+		9FCD8A212A1EFF2700BBB2C3 /* ManagerMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FCD8A1F2A1EFF2700BBB2C3 /* ManagerMenuViewController.swift */; };
+		9FCD8A222A1EFF2700BBB2C3 /* ManagerMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9FCD8A202A1EFF2700BBB2C3 /* ManagerMenuViewController.xib */; };
+		9FCD8A252A1F069000BBB2C3 /* ResidencePurchaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FCD8A232A1F069000BBB2C3 /* ResidencePurchaseViewController.swift */; };
+		9FCD8A262A1F069000BBB2C3 /* ResidencePurchaseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9FCD8A242A1F069000BBB2C3 /* ResidencePurchaseViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +37,10 @@
 		21B256402A0ED9B40061D4A0 /* FoodMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodMenuViewController.swift; sourceTree = "<group>"; };
 		21B256412A0ED9B40061D4A0 /* FoodMenuViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FoodMenuViewController.xib; sourceTree = "<group>"; };
 		9F72EA702A1AF61F00BFA635 /* Manager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Manager.swift; sourceTree = "<group>"; };
+		9FCD8A1F2A1EFF2700BBB2C3 /* ManagerMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerMenuViewController.swift; sourceTree = "<group>"; };
+		9FCD8A202A1EFF2700BBB2C3 /* ManagerMenuViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ManagerMenuViewController.xib; sourceTree = "<group>"; };
+		9FCD8A232A1F069000BBB2C3 /* ResidencePurchaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResidencePurchaseViewController.swift; sourceTree = "<group>"; };
+		9FCD8A242A1F069000BBB2C3 /* ResidencePurchaseViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResidencePurchaseViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +108,10 @@
 			children = (
 				21B256402A0ED9B40061D4A0 /* FoodMenuViewController.swift */,
 				21B256412A0ED9B40061D4A0 /* FoodMenuViewController.xib */,
+				9FCD8A1F2A1EFF2700BBB2C3 /* ManagerMenuViewController.swift */,
+				9FCD8A202A1EFF2700BBB2C3 /* ManagerMenuViewController.xib */,
+				9FCD8A232A1F069000BBB2C3 /* ResidencePurchaseViewController.swift */,
+				9FCD8A242A1F069000BBB2C3 /* ResidencePurchaseViewController.xib */,
 			);
 			path = ResourceMenuViewControllers;
 			sourceTree = "<group>";
@@ -167,6 +179,8 @@
 				211C94842A0EB01300C2891F /* Assets.xcassets in Resources */,
 				21B256432A0ED9B40061D4A0 /* FoodMenuViewController.xib in Resources */,
 				211C94832A0EB01300C2891F /* Art.scnassets in Resources */,
+				9FCD8A222A1EFF2700BBB2C3 /* ManagerMenuViewController.xib in Resources */,
+				9FCD8A262A1F069000BBB2C3 /* ResidencePurchaseViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -181,8 +195,10 @@
 				9F72EA712A1AF61F00BFA635 /* Manager.swift in Sources */,
 				211C947B2A0EB01300C2891F /* GameViewController.swift in Sources */,
 				21B2563F2A0ECC3C0061D4A0 /* GameManager.swift in Sources */,
+				9FCD8A252A1F069000BBB2C3 /* ResidencePurchaseViewController.swift in Sources */,
 				211C94822A0EB01300C2891F /* GameController.swift in Sources */,
 				211C94792A0EB01300C2891F /* AppDelegate.swift in Sources */,
+				9FCD8A212A1EFF2700BBB2C3 /* ManagerMenuViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

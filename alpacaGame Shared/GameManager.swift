@@ -23,7 +23,6 @@ class GameManager {
     private var residenceCount: Float = 0
     private var processorCount: Float = 0
     private var alpacaFood: Float = 0
-    private var industrialManager: Bool = false
     
     // MARK: Constants
     // Numbers that we can make quick on the fly changes to, in order to slightly change game mechanics to make
@@ -49,13 +48,25 @@ class GameManager {
     }
     
     @objc func runTimedCode() {
-        if industrialManager == true {
+        if processingManager != nil {
+            // TODO: Eventually gotta check for cool down here
             money += getMoneyRate()
         }
         
         // If alpaca food is at 0 we will not consume food but we can also not produce anymore alpacas
         if alpacaFood > 0 {
-            alpacaFood -= getAlpacaConsumtionRate()
+            // The user has food, but not enough to feed the whole herd
+            if alpacaFood <= getAlpacaConsumtionRate() {
+                alpacaFood = 0
+            } else {
+                alpacaFood -= getAlpacaConsumtionRate()
+            }
+            
+            // Only create more if food is enough
+            if animalHusbandryManager != nil {
+                // TODO: Should be dynaminc by level
+                alpacaCount += 1
+            }
         }
         
         updateDelegates()
@@ -118,6 +129,10 @@ class GameManager {
         }
     }
     
+    public func buyResidence(alpacaSpace: Int) {
+        self.residenceCount += Float(alpacaSpace)
+    }
+    
     // MARK: Building Actions
     public func handleProcessorTap() {
         money += getMoneyRate()
@@ -126,8 +141,8 @@ class GameManager {
     
     public func handleHusbandryTap() {
         // Verify there is space in residences for new alpacas
-        if residenceCount > self.alpacaCount {
+        //if residenceCount > self.alpacaCount {
             alpacaCount += getAlpacaSpawnRate()
-        }
+        //}
     }
 }

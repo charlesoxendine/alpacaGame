@@ -81,6 +81,10 @@ class GameViewController: UIViewController {
         self.present(myViewController, animated: true, completion: nil)
     }
     
+    @IBAction func managerMenuButtonTapped(_ sender: Any) {
+        let myViewController = ManagerMenuViewController(nibName: "ManagerMenuViewController", bundle: nil)
+        self.present(myViewController, animated: true, completion: nil)
+    }
 }
 
 extension GameViewController: GameManagerDelegate {

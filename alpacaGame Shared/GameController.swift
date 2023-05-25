@@ -37,6 +37,10 @@ class GameController: NSObject, SCNSceneRendererDelegate {
             if result.node.name == "factory" {
                 GameManager.shared.handleProcessorTap()
             }
+            
+            if result.node.name == "husbandry" {
+                GameManager.shared.handleHusbandryTap()
+            }
         }
     }
     
