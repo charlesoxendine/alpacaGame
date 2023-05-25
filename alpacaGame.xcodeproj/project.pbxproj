@@ -15,8 +15,9 @@
 		211C94832A0EB01300C2891F /* Art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 211C946F2A0EB01200C2891F /* Art.scnassets */; };
 		211C94842A0EB01300C2891F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 211C94702A0EB01300C2891F /* Assets.xcassets */; };
 		21B2563F2A0ECC3C0061D4A0 /* GameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B2563E2A0ECC3C0061D4A0 /* GameManager.swift */; };
-		21B256422A0ED9B40061D4A0 /* StoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B256402A0ED9B40061D4A0 /* StoreViewController.swift */; };
-		21B256432A0ED9B40061D4A0 /* StoreViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 21B256412A0ED9B40061D4A0 /* StoreViewController.xib */; };
+		21B256422A0ED9B40061D4A0 /* FoodMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B256402A0ED9B40061D4A0 /* FoodMenuViewController.swift */; };
+		21B256432A0ED9B40061D4A0 /* FoodMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 21B256412A0ED9B40061D4A0 /* FoodMenuViewController.xib */; };
+		9F72EA712A1AF61F00BFA635 /* Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F72EA702A1AF61F00BFA635 /* Manager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,8 +30,9 @@
 		211C947D2A0EB01300C2891F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		211C94802A0EB01300C2891F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		21B2563E2A0ECC3C0061D4A0 /* GameManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameManager.swift; sourceTree = "<group>"; };
-		21B256402A0ED9B40061D4A0 /* StoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreViewController.swift; sourceTree = "<group>"; };
-		21B256412A0ED9B40061D4A0 /* StoreViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StoreViewController.xib; sourceTree = "<group>"; };
+		21B256402A0ED9B40061D4A0 /* FoodMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodMenuViewController.swift; sourceTree = "<group>"; };
+		21B256412A0ED9B40061D4A0 /* FoodMenuViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FoodMenuViewController.xib; sourceTree = "<group>"; };
+		9F72EA702A1AF61F00BFA635 /* Manager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Manager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,12 +58,12 @@
 		211C946D2A0EB01200C2891F /* alpacaGame Shared */ = {
 			isa = PBXGroup;
 			children = (
+				9FCD8A192A1EFC2800BBB2C3 /* ResourceMenuViewControllers */,
+				9F72EA6F2A1AF5FE00BFA635 /* Modals */,
 				21B2563E2A0ECC3C0061D4A0 /* GameManager.swift */,
 				211C946E2A0EB01200C2891F /* GameController.swift */,
 				211C946F2A0EB01200C2891F /* Art.scnassets */,
 				211C94702A0EB01300C2891F /* Assets.xcassets */,
-				21B256402A0ED9B40061D4A0 /* StoreViewController.swift */,
-				21B256412A0ED9B40061D4A0 /* StoreViewController.xib */,
 			);
 			path = "alpacaGame Shared";
 			sourceTree = "<group>";
@@ -83,6 +85,23 @@
 				211C947F2A0EB01300C2891F /* LaunchScreen.storyboard */,
 			);
 			path = "alpacaGame iOS";
+			sourceTree = "<group>";
+		};
+		9F72EA6F2A1AF5FE00BFA635 /* Modals */ = {
+			isa = PBXGroup;
+			children = (
+				9F72EA702A1AF61F00BFA635 /* Manager.swift */,
+			);
+			path = Modals;
+			sourceTree = "<group>";
+		};
+		9FCD8A192A1EFC2800BBB2C3 /* ResourceMenuViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				21B256402A0ED9B40061D4A0 /* FoodMenuViewController.swift */,
+				21B256412A0ED9B40061D4A0 /* FoodMenuViewController.xib */,
+			);
+			path = ResourceMenuViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -146,7 +165,7 @@
 				211C947E2A0EB01300C2891F /* Main.storyboard in Resources */,
 				211C94812A0EB01300C2891F /* LaunchScreen.storyboard in Resources */,
 				211C94842A0EB01300C2891F /* Assets.xcassets in Resources */,
-				21B256432A0ED9B40061D4A0 /* StoreViewController.xib in Resources */,
+				21B256432A0ED9B40061D4A0 /* FoodMenuViewController.xib in Resources */,
 				211C94832A0EB01300C2891F /* Art.scnassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -158,7 +177,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				21B256422A0ED9B40061D4A0 /* StoreViewController.swift in Sources */,
+				21B256422A0ED9B40061D4A0 /* FoodMenuViewController.swift in Sources */,
+				9F72EA712A1AF61F00BFA635 /* Manager.swift in Sources */,
 				211C947B2A0EB01300C2891F /* GameViewController.swift in Sources */,
 				21B2563F2A0ECC3C0061D4A0 /* GameManager.swift in Sources */,
 				211C94822A0EB01300C2891F /* GameController.swift in Sources */,

@@ -26,16 +26,21 @@ class GameManager {
     private var industrialManager: Bool = false
     
     // MARK: Constants
+    // Numbers that we can make quick on the fly changes to, in order to slightly change game mechanics to make
+    // for a better experience for our users.
     private let alpacasPerSecond: Float = 1
     private let moneyPerAlpacaPerSecond: Float = 0.01
     private let processerRatePerSecond: Float  = 1
-    private let alpacaFoodConsumptionRate: Float = 1
     private let foodCostPerFifty: Float = 3
+    
+    // MARK: Managers
+    private var processingManager: Manager?
+    private var animalHusbandryManager: Manager?
     
     // MARK: Timer
     private var gameTimer: Timer?
     
-    public func startTimer() {
+    public func startTimers() {
         gameTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(runTimedCode), userInfo: nil, repeats: true)
     }
     
@@ -51,7 +56,6 @@ class GameManager {
         // If alpaca food is at 0 we will not consume food but we can also not produce anymore alpacas
         if alpacaFood > 0 {
             alpacaFood -= getAlpacaConsumtionRate()
-            alpacaCount += getAlpacaSpawnRate()
         }
         
         updateDelegates()
@@ -76,7 +80,8 @@ class GameManager {
     }
     
     private func getAlpacaConsumtionRate() -> Float {
-        return alpacaFoodConsumptionRate
+        let consumptionRate = alpacaCount * 1
+        return consumptionRate
     }
     
     // MARK: Getters
@@ -90,6 +95,7 @@ class GameManager {
         return alpacaCount
     }
     
+    // MARK: Make Purchases
     public func buyFood(amount: Float) {
         let cost = amount/50 * foodCostPerFifty
         if money < cost {
@@ -101,8 +107,27 @@ class GameManager {
         self.money -= cost
     }
     
+    public func buyManager(managerType: ManagerType) {
+        let newManager = Manager(managerType: managerType)
+        
+        switch managerType {
+        case .animalHusbandry:
+            self.animalHusbandryManager = newManager
+        case .processing:
+            self.processingManager = newManager
+        }
+    }
+    
+    // MARK: Building Actions
     public func handleProcessorTap() {
         money += getMoneyRate()
         updateDelegates()
+    }
+    
+    public func handleHusbandryTap() {
+        // Verify there is space in residences for new alpacas
+        if residenceCount > self.alpacaCount {
+            alpacaCount += getAlpacaSpawnRate()
+        }
     }
 }

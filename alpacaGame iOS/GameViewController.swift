@@ -44,7 +44,7 @@ class GameViewController: UIViewController {
         
         setUI()
         gameManager.delegate = self
-        gameManager.startTimer()
+        gameManager.startTimers()
     }
     
     //Doing nothing in pan gesture other than  printing
@@ -77,7 +77,7 @@ class GameViewController: UIViewController {
     }
     
     @IBAction func foodButtonTouched(_ sender: Any) {
-        let myViewController = StoreViewController(nibName: "StoreViewController", bundle: nil)
+        let myViewController = FoodMenuViewController(nibName: "FoodMenuViewController", bundle: nil)
         self.present(myViewController, animated: true, completion: nil)
     }
     
