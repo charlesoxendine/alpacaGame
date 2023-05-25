@@ -27,15 +27,12 @@ class GameViewController: UIViewController {
         
         // Allow the user to manipulate the camera
         self.sceneView.allowsCameraControl = true
+        self.sceneView.cameraControlConfiguration.truckSensitivity = 0
+        self.sceneView.cameraControlConfiguration.rotationSensitivity = 0
         
         //TODO: Make this toggle based on prod/debug
         self.sceneView.showsStatistics = false
         self.sceneView.backgroundColor = UIColor.black
-        
-        // Add a tap gesture recognizer
-        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(panDetected(sender:)))
-        panGesture.maximumNumberOfTouches = 1
-        panGesture.minimumNumberOfTouches = 1
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
         var gestureRecognizers = sceneView.gestureRecognizers ?? []
@@ -94,9 +91,11 @@ class GameViewController: UIViewController {
 
 extension GameViewController: GameManagerDelegate {
     func resetHeaderStats(moneyCount: Float, moneyValue: String, foodCount: Float, alpacaCount: Float, residenceCount: Float) {
-        self.moneyTextField.text = moneyValue
-        self.foodTextField.text = "🌽: \(foodCount)"
-        self.alpacaCountLabel.text = "🦙: \(alpacaCount)"
-        self.residenceCountLabel.text = "🏠: \(residenceCount)"
+        DispatchQueue.main.async {
+            self.moneyTextField.text = moneyValue
+            self.foodTextField.text = "🌽: \(foodCount)"
+            self.alpacaCountLabel.text = "🦙: \(alpacaCount)"
+            self.residenceCountLabel.text = "🏠: \(residenceCount)"
+        }
     }
 }

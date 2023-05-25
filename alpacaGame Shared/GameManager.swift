@@ -19,8 +19,8 @@ class GameManager {
     private init() {}
     
     private var money: Float = 40
-    private var alpacaCount: Float = 0
-    private var residenceCount: Float = 0
+    private var alpacaCount: Float = 20
+    private var residenceCount: Float = 20
     private var processorCount: Float = 0
     private var alpacaFood: Float = 0
     
@@ -28,9 +28,10 @@ class GameManager {
     // Numbers that we can make quick on the fly changes to, in order to slightly change game mechanics to make
     // for a better experience for our users.
     private let alpacasPerSecond: Float = 1
-    private let moneyPerAlpacaPerSecond: Float = 0.05
+    private let moneyPerAlpacaPerSecond: Float = 0.1
     private let processerRatePerSecond: Float  = 1
-    private let foodCostPerFifty: Float = 3
+    public let foodCostPerItem: Float = 0.4
+    public let costPerResidence: Float = 0.4
     
     // MARK: Managers
     private var processingManager: Manager?
@@ -53,13 +54,6 @@ class GameManager {
             money += getMoneyRate()
         }
         
-        // The user has food, but not enough to feed the whole herd
-        if alpacaFood <= getAlpacaConsumtionRate() {
-            alpacaFood = 0
-        } else {
-            alpacaFood -= getAlpacaConsumtionRate()
-        }
-        
         // Only create more if food is enough
         if animalHusbandryManager != nil && residenceCount > (alpacaCount + getAlpacaSpawnRate()) {
             // TODO: Should be dynaminc by level
@@ -80,8 +74,8 @@ class GameManager {
     }
     
     private func getMoneyRate() -> Float {
-        let rate = moneyPerAlpacaPerSecond * alpacaFood
-        return alpacaCount * moneyPerAlpacaPerSecond
+        let rate = moneyPerAlpacaPerSecond * (alpacaFood + 1)/alpacaCount
+        return alpacaCount * rate
     }
     
     private func getProcesserRate() -> Float{
@@ -106,7 +100,7 @@ class GameManager {
     
     // MARK: Make Purchases
     public func buyFood(amount: Float) {
-        let cost = amount/50 * foodCostPerFifty
+        let cost = amount * foodCostPerItem
         if money < cost {
             // TODO: Handle error: Can't buy stupid
             return
@@ -121,19 +115,39 @@ class GameManager {
         
         switch managerType {
         case .animalHusbandry:
+            guard GameManager.shared.money > 1500 else {
+                return
+            }
+            
             self.animalHusbandryManager = newManager
         case .processing:
+            guard GameManager.shared.money > 2500 else {
+                return
+            }
+            
             self.processingManager = newManager
         }
     }
     
     public func buyResidence(alpacaSpace: Int) {
+        guard GameManager.shared.money > (costPerResidence * Float(alpacaSpace)) else {
+            return
+        }
+        
         self.residenceCount += Float(alpacaSpace)
     }
     
     // MARK: Building Actions
     public func handleProcessorTap() {
         money += getMoneyRate()
+        
+        // The user has food, but not enough to feed the whole herd
+        if alpacaFood <= getAlpacaConsumtionRate() {
+            alpacaFood = 0
+        } else {
+            alpacaFood -= getAlpacaConsumtionRate()
+        }
+        
         updateDelegates()
     }
     
@@ -141,5 +155,11 @@ class GameManager {
         if residenceCount > self.alpacaCount {
             alpacaCount += getAlpacaSpawnRate()
         }
+    }
+    
+    public static func getMoneyValue(value: Float) -> String {
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .currency
+        return numberFormatter.string(from: value as NSNumber) ?? "$0.00"
     }
 }
