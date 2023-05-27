@@ -75,13 +75,13 @@ class GameViewController: UIViewController {
     
     @IBAction func foodButtonTouched(_ sender: Any) {
         let myViewController = PurchaseMenuHostingViewController()
-        myViewController.setView(purchaseType: .residential)
+        myViewController.setView(purchaseType: .food)
         self.present(myViewController, animated: true, completion: nil)
     }
     
     @IBAction func managerMenuButtonTapped(_ sender: Any) {
         let myViewController = PurchaseMenuHostingViewController()
-        myViewController.setView(purchaseType: .residential)
+        myViewController.setView(purchaseType: .managers)
         self.present(myViewController, animated: true, completion: nil)
     }
     

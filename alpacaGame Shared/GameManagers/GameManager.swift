@@ -107,11 +107,10 @@ class GameManager {
     }
     
     // MARK: Make Purchases
-    public func buyFood(amount: Float) {
+    public func buyFood(amount: Float) async throws -> Bool? {
         let cost = amount * foodCostPerItem
         if money < cost {
-            // TODO: Handle error: Can't buy stupid
-            return
+            throw NSError(
         }
         
         self.alpacaFood += amount

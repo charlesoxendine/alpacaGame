@@ -10,13 +10,17 @@ import SwiftUI
 
 class PurchaseMenuHostingViewController: UIViewController {
     
+    var swiftView: PurchaseMenuBaseView?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
     func setView(purchaseType: PurchaseMenuType) {
         let items = getPurchasableItems(purchaseType: purchaseType)
-        let vc = UIHostingController(rootView: PurchaseMenuBaseView(purchaseMenuTitle: purchaseType.rawValue, objectsToPurchase: items))
+        swiftView = PurchaseMenuBaseView(purchaseMenuTitle: purchaseType.rawValue, objectsToPurchase: items)
+        swiftView?.delegate = self
+        let vc = UIHostingController(rootView: swiftView)
         let swiftuiView = vc.view!
         swiftuiView.translatesAutoresizingMaskIntoConstraints = false  
         
@@ -41,13 +45,19 @@ class PurchaseMenuHostingViewController: UIViewController {
         
         switch purchaseType {
         case .food:
-            itemsData = purchasableData.getManagersForSale()
+            itemsData = purchasableData.getFoodForSale()
         case .residential:
-            itemsData = purchasableData.getManagersForSale()
+            itemsData = purchasableData.getHousingForSale()
         case .managers:
             itemsData = purchasableData.getManagersForSale()
         }
         
         return itemsData
+    }
+}
+
+extension PurchaseMenuHostingViewController: PurchaseMenuBaseViewDelegate {
+    func closeTapped() {
+        self.dismiss(animated: true)
     }
 }
