@@ -123,16 +123,20 @@ class GameManager {
         
         switch managerType {
         case .animalHusbandry:
-            guard GameManager.shared.money > 1500 else {
+            let cost = Float(1500)
+            guard GameManager.shared.money >= cost else {
                 return
             }
             
+            self.money -= cost
             self.animalHusbandryManager = newManager
         case .processing:
-            guard GameManager.shared.money > 2500 else {
+            let cost = Float(2500)
+            guard GameManager.shared.money >= cost else {
                 return
             }
             
+            self.money -= cost
             self.processingManager = newManager
         }
     }
@@ -175,5 +179,11 @@ class GameManager {
         let numberFormatter = NumberFormatter()
         numberFormatter.numberStyle = .currency
         return numberFormatter.string(from: value as NSNumber) ?? "$0.00"
+    }
+}
+
+extension ResidencePurchaseViewController: GameManagerDelegate {
+    func resetHeaderStats(moneyCount: Float, moneyValue: String, foodCount: Float, alpacaCount: Float, residenceCount: Float) {
+        self.moneyLabel.text = GameManager.getMoneyValue(value: moneyCount)
     }
 }
