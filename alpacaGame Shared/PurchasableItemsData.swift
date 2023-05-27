@@ -40,11 +40,11 @@ class PurchasableItemsData {
     
     private let Food_100 = PurchasableItem(itemName: "100 Food",
                                            itemCost: (GameManager.shared.foodCostPerItem * 100),
-                                           purchasableItemType: .residental, quantity: 100)
+                                           purchasableItemType: .food, quantity: 100)
     private let Food_300 = PurchasableItem(itemName: "300 Food",
                                            itemCost: (GameManager.shared.foodCostPerItem * 300),
-                                           purchasableItemType: .residental, quantity: 300)
+                                           purchasableItemType: .food, quantity: 300)
     private let Food_1000 = PurchasableItem(itemName: "1000 Food",
                                            itemCost: (GameManager.shared.foodCostPerItem * 1000),
-                                            purchasableItemType: .residental, quantity: 1000)
+                                            purchasableItemType: .food, quantity: 1000)
 }

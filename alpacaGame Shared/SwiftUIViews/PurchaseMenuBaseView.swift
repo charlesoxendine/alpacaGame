@@ -14,7 +14,10 @@ protocol PurchaseMenuBaseViewDelegate {
 struct PurchaseMenuBaseView: View {
     @State var purchaseMenuTitle: String! = ""
     @State var purchasableObject: [PurchasableItem] = []
+    
     @State private var showingAlert = false
+    @State private var errorMessageShown = false
+    @State private var errorMessage: String?
     
     @State private var currentlySelectedItem: PurchasableItem?
     @State private var currentMoney: String! = "$0.00"
@@ -62,20 +65,45 @@ struct PurchaseMenuBaseView: View {
                     return
                 }
                 
-                switch currentItem.purchasableItemType {
-                case .residental:
-                    GameManager.shared.buyResidence(alpacaSpace: currentItem.quantity)
-                case .breedingManager:
-                    GameManager.shared.buyManager(managerType: .breeding)
-                case .processingManager:
-                    GameManager.shared.buyManager(managerType: .processing)
-                case .food:
-                    GameManager.shared.buyFood(amount: Float(currentItem.quantity))
-                case .none:
-                    print("tehee")// This shouldn't ever happen...right?
+                Task {
+                    switch currentItem.purchasableItemType {
+                    case .residental:
+                        do {
+                            try await GameManager.shared.buyResidence(alpacaSpace: currentItem.quantity)
+                        } catch (let error) {
+                            errorMessage = (error as? AlpacaError)?.description ?? "Unknown"
+                            errorMessageShown = true
+                        }
+                    case .breedingManager:
+                        do {
+                            try await GameManager.shared.buyManager(managerType: .breeding)
+                        } catch (let error) {
+                            errorMessage = (error as? AlpacaError)?.description ?? "Unknown"
+                            errorMessageShown = true
+                        }
+                    case .processingManager:
+                        do {
+                            try await GameManager.shared.buyManager(managerType: .processing)
+                        } catch (let error) {
+                            errorMessage = (error as? AlpacaError)?.description ?? "Unknown"
+                            errorMessageShown = true
+                        }
+                    case .food:
+                        do {
+                            try await GameManager.shared.buyFood(amount: Float(currentItem.quantity))
+                        } catch (let error) {
+                            errorMessage = (error as? AlpacaError)?.description ?? "Unknown"
+                            errorMessageShown = true
+                        }
+                    case .none:
+                        print("tehee") // This shouldn't ever happen...right?
+                    }
                 }
             }
             
+            Button("Cancel", role: .cancel) {}
+        }
+        .alert("\(errorMessage ?? "Unknown Error")", isPresented: $errorMessageShown) {
             Button("Cancel", role: .cancel) {}
         }
     }

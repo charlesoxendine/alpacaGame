@@ -20,6 +20,7 @@
 		9F6D744E2A224BF700C16B14 /* Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6D744D2A224BF700C16B14 /* Manager.swift */; };
 		9F6D74512A22511B00C16B14 /* PurchaseMenuHostingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6D74502A22511B00C16B14 /* PurchaseMenuHostingViewController.swift */; };
 		9F6D74552A225AD600C16B14 /* PurchasableItemsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6D74542A225AD600C16B14 /* PurchasableItemsData.swift */; };
+		9F6D74582A2288A800C16B14 /* AlpacaError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6D74572A2288A800C16B14 /* AlpacaError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,7 @@
 		9F6D744D2A224BF700C16B14 /* Manager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Manager.swift; sourceTree = "<group>"; };
 		9F6D74502A22511B00C16B14 /* PurchaseMenuHostingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseMenuHostingViewController.swift; sourceTree = "<group>"; };
 		9F6D74542A225AD600C16B14 /* PurchasableItemsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchasableItemsData.swift; sourceTree = "<group>"; };
+		9F6D74572A2288A800C16B14 /* AlpacaError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlpacaError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 		211C946D2A0EB01200C2891F /* alpacaGame Shared */ = {
 			isa = PBXGroup;
 			children = (
+				9F6D74562A22888000C16B14 /* ErrorHandling */,
 				211C946E2A0EB01200C2891F /* GameController.swift */,
 				9F6D74532A22513F00C16B14 /* GameManagers */,
 				9F6D74522A22512B00C16B14 /* SwiftUIViews */,
@@ -124,6 +127,14 @@
 				21B2563E2A0ECC3C0061D4A0 /* GameManager.swift */,
 			);
 			path = GameManagers;
+			sourceTree = "<group>";
+		};
+		9F6D74562A22888000C16B14 /* ErrorHandling */ = {
+			isa = PBXGroup;
+			children = (
+				9F6D74572A2288A800C16B14 /* AlpacaError.swift */,
+			);
+			path = ErrorHandling;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -200,6 +211,7 @@
 			files = (
 				211C947B2A0EB01300C2891F /* GameViewController.swift in Sources */,
 				21B2563F2A0ECC3C0061D4A0 /* GameManager.swift in Sources */,
+				9F6D74582A2288A800C16B14 /* AlpacaError.swift in Sources */,
 				211C94822A0EB01300C2891F /* GameController.swift in Sources */,
 				211C94792A0EB01300C2891F /* AppDelegate.swift in Sources */,
 				9F6D744E2A224BF700C16B14 /* Manager.swift in Sources */,

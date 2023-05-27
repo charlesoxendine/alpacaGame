@@ -107,45 +107,48 @@ class GameManager {
     }
     
     // MARK: Make Purchases
-    public func buyFood(amount: Float) async throws -> Bool? {
+    public func buyFood(amount: Float) async throws {
         let cost = amount * foodCostPerItem
         if money < cost {
-            throw NSError(
+            throw AlpacaError.notEnoughMoney
         }
         
         self.alpacaFood += amount
         self.money -= cost
+        self.updateDelegates()
     }
     
-    public func buyManager(managerType: ManagerType) {
+    public func buyManager(managerType: ManagerType) async throws {
         let newManager = Manager(managerType: managerType, level: 1)
         
         switch managerType {
         case .breeding:
             let cost = Float(1500)
             guard GameManager.shared.money >= cost else {
-                return
+                throw AlpacaError.notEnoughMoney
             }
             
             self.money -= cost
             self.animalHusbandryManager = newManager
+            self.updateDelegates()
         case .processing:
             let cost = Float(2500)
             guard GameManager.shared.money >= cost else {
-                return
+                throw AlpacaError.notEnoughMoney
             }
             
             self.money -= cost
             self.processingManager = newManager
+            self.updateDelegates()
         case .shipping:
             print("NOT FINISHED YET")
         }
     }
     
-    public func buyResidence(alpacaSpace: Int) {
+    public func buyResidence(alpacaSpace: Int) async throws {
         let totalCost = (costPerResidence * Float(alpacaSpace))
         guard GameManager.shared.money > totalCost else {
-            return
+            throw AlpacaError.notEnoughMoney
         }
         
         self.money -= totalCost
