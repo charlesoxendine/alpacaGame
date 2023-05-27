@@ -50,7 +50,7 @@ class GameController: NSObject, SCNSceneRendererDelegate {
     
     func renderFieldSheep() {
         for _ in 1...30 {
-            let node = SCNNode(named: "Art.scnassets/llama.dae")
+            let node = SCNNode(named: "Art.scnassets/alpacaModel.dae")
             let randomX:Float = Float.random(in: -1.5 ..< 1.5)
             let randomY:Float = 0
             let randomZ:Float = Float.random(in: -1 ..< 1)
