@@ -74,17 +74,20 @@ class GameViewController: UIViewController {
     }
     
     @IBAction func foodButtonTouched(_ sender: Any) {
-        let myViewController = FoodMenuViewController(nibName: "FoodMenuViewController", bundle: nil)
+        let myViewController = PurchaseMenuHostingViewController()
+        myViewController.setView(purchaseType: .residential)
         self.present(myViewController, animated: true, completion: nil)
     }
     
     @IBAction func managerMenuButtonTapped(_ sender: Any) {
-        let myViewController = ManagerMenuViewController(nibName: "ManagerMenuViewController", bundle: nil)
+        let myViewController = PurchaseMenuHostingViewController()
+        myViewController.setView(purchaseType: .residential)
         self.present(myViewController, animated: true, completion: nil)
     }
     
     @IBAction func residenceTapped(_ sender: Any) {
-        let myViewController = ResidencePurchaseViewController(nibName: "ResidencePurchaseViewController", bundle: nil)
+        let myViewController = PurchaseMenuHostingViewController()
+        myViewController.setView(purchaseType: .residential)
         self.present(myViewController, animated: true, completion: nil)
     }
 }

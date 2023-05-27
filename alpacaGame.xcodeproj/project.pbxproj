@@ -19,6 +19,7 @@
 		9F01E89B2A21AED700FD05CD /* PurchaseObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F01E89A2A21AED700FD05CD /* PurchaseObject.swift */; };
 		9F6D744E2A224BF700C16B14 /* Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6D744D2A224BF700C16B14 /* Manager.swift */; };
 		9F6D74512A22511B00C16B14 /* PurchaseMenuHostingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6D74502A22511B00C16B14 /* PurchaseMenuHostingViewController.swift */; };
+		9F6D74552A225AD600C16B14 /* PurchasableItemsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6D74542A225AD600C16B14 /* PurchasableItemsData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,7 @@
 		9F01E89A2A21AED700FD05CD /* PurchaseObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseObject.swift; sourceTree = "<group>"; };
 		9F6D744D2A224BF700C16B14 /* Manager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Manager.swift; sourceTree = "<group>"; };
 		9F6D74502A22511B00C16B14 /* PurchaseMenuHostingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseMenuHostingViewController.swift; sourceTree = "<group>"; };
+		9F6D74542A225AD600C16B14 /* PurchasableItemsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchasableItemsData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +70,7 @@
 				211C946F2A0EB01200C2891F /* Art.scnassets */,
 				211C94702A0EB01300C2891F /* Assets.xcassets */,
 				9F01E89A2A21AED700FD05CD /* PurchaseObject.swift */,
+				9F6D74542A225AD600C16B14 /* PurchasableItemsData.swift */,
 			);
 			path = "alpacaGame Shared";
 			sourceTree = "<group>";
@@ -200,6 +203,7 @@
 				211C94822A0EB01300C2891F /* GameController.swift in Sources */,
 				211C94792A0EB01300C2891F /* AppDelegate.swift in Sources */,
 				9F6D744E2A224BF700C16B14 /* Manager.swift in Sources */,
+				9F6D74552A225AD600C16B14 /* PurchasableItemsData.swift in Sources */,
 				9F6D74512A22511B00C16B14 /* PurchaseMenuHostingViewController.swift in Sources */,
 				9F01E8992A21AE8900FD05CD /* PurchaseMenuBaseView.swift in Sources */,
 				9F01E89B2A21AED700FD05CD /* PurchaseObject.swift in Sources */,

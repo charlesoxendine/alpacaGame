@@ -6,24 +6,48 @@
 //
 
 import UIKit
+import SwiftUI
 
 class PurchaseMenuHostingViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func setView(purchaseType: PurchaseMenuType) {
+        let items = getPurchasableItems(purchaseType: purchaseType)
+        let vc = UIHostingController(rootView: PurchaseMenuBaseView(purchaseMenuTitle: purchaseType.rawValue, objectsToPurchase: items))
+        let swiftuiView = vc.view!
+        swiftuiView.translatesAutoresizingMaskIntoConstraints = false  
+        
+        addChild(vc)
+        view.addSubview(swiftuiView)
+        
+        NSLayoutConstraint.activate([
+            swiftuiView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            swiftuiView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            swiftuiView.topAnchor.constraint(equalTo: view.topAnchor),
+            swiftuiView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            swiftuiView.leftAnchor.constraint(equalTo: view.leftAnchor),
+            swiftuiView.rightAnchor.constraint(equalTo: view.rightAnchor),
+        ])
+        
+        vc.didMove(toParent: self)
     }
-    */
-
+    
+    func getPurchasableItems(purchaseType: PurchaseMenuType) -> [PurchasableItem] {
+        let purchasableData = PurchasableItemsData()
+        var itemsData: [PurchasableItem] = []
+        
+        switch purchaseType {
+        case .food:
+            itemsData = purchasableData.getManagersForSale()
+        case .residential:
+            itemsData = purchasableData.getManagersForSale()
+        case .managers:
+            itemsData = purchasableData.getManagersForSale()
+        }
+        
+        return itemsData
+    }
 }

@@ -18,7 +18,7 @@ class GameManager {
     
     private init() {}
     
-    private var money: Float = 40
+    public var money: Float = 40
     private var alpacaCount: Float = 20
     private var residenceCount: Float = 20
     private var processorCount: Float = 0
